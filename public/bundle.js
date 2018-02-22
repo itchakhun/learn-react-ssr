@@ -18285,19 +18285,22 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (props) {
+function App(props) {
+  var facts = props.facts.map(function (f, i) {
+    return _react2.default.createElement(
+      'li',
+      { key: i },
+      f.text
+    );
+  });
   return _react2.default.createElement(
     'ul',
     null,
-    props.facts.map(function (f, i) {
-      return _react2.default.createElement(
-        'li',
-        { key: i },
-        f.text
-      );
-    })
+    facts
   );
-};
+}
+
+exports.default = App;
 
 /***/ }),
 /* 28 */
@@ -18317,8 +18320,8 @@ var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var getFacts = function getFacts() {
-  return (0, _isomorphicFetch2.default)('https://ssr-react-firebaseio.com/facts.json').then(function (r) {
-    return r.json;
+  return (0, _isomorphicFetch2.default)('https://learnreactssr.firebaseio.com/facts.json').then(function (r) {
+    return r.json();
   });
 };
 
